@@ -1,16 +1,18 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"Gestion-stock-Gin/config"
+	//"Gestion-stock-Gin/routes"
+	"log"
 )
 
 func main() {
-	router := gin.Default()
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "Bienvenue dans l'API de gestion de stock",
-		})
-	})
+	config.ConnectDatabase()
 
-	router.Run(":8080")
+	//router := routes.SetupRoutes()
+
+	log.Println("Serveur démarré sur http://localhost:8080")
+
+	// if err := router.Run(":8080"); err != nil {
+	log.Fatal("Erreur au démarrage du serveur :") //err)
 }
